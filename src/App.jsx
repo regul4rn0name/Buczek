@@ -1,4 +1,5 @@
 import About from "./About"
+import Events from "./Events"
 
 function App() {
 
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <About/>
+      <Events/>
     </>
   )
 }
