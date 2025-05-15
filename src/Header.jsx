@@ -5,7 +5,7 @@ export default function Header({ onOfertsClick }){
             <section className="flex justify-self-end flex-col h-1/2">
                 <div className="text-white flex justify-end space-x-5 p-8">
                     <button>O mnie</button>
-                    <button onClick={()=>onOfertsClick()}>Oferty</button>
+                    <button onClick={()=>onOfertsClick(0)}>Oferty</button>
                     <button>Wydarzenia</button>
                     <button>Umów się</button>
                 </div>

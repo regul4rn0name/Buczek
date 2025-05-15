@@ -6,22 +6,21 @@ import Oferts from "./Oferts"
 function App() {
   const Ref = useRef([]);
 
-  const ensureRef = (index) => {
-    if (!Ref.current[index]) {
-      Ref.current[index] = React.createRef();
-    }
-    return Ref.current[index];
+  const ensureRef =(index)=> (el) => {
+    
+      Ref.current[index] = el;
+    
   };
 
-  const scrollToOferts = (Ref) => {
-    Ref.current?.scrollIntoView({ behavior: "smooth" });
-    console.log("jajca");
+  const scrollToOferts = (index) => {
+    Ref.current[index]?.scrollIntoView({ behavior: "smooth" });
+    console.log(Ref.current[0]);
   };
 
 
   return (
     <>
-      <Header onOfertsClick={() => scrollToOferts(1)}/>
+      <Header onOfertsClick={scrollToOferts}/>
       <div ref={ensureRef(0)}>
         <Oferts/>
       </div>
