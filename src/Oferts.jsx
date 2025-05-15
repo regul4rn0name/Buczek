@@ -1,4 +1,5 @@
 import OfertComponent from "./OfertComponent";
+import Header from "./Header";
 import React, { useRef, useEffect, useState } from "react";
 
 export default function Oferts() {
@@ -35,10 +36,9 @@ export default function Oferts() {
         className="overflow-x-scroll whitespace-nowrap flex mt-9 no-scrollbar scroll-smooth"
         ref={scrollRef}
       >
+        
         {items.map((item, index) => (
           <div key={index} className="flex w-full flex-shrink-0">
-            <OfertComponent />
-            <OfertComponent />
             <OfertComponent />
           </div>
         ))}
