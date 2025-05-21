@@ -15,5 +15,8 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+  .duration-25{
+    transition: 0.25s;
+  }
 }
 
