@@ -43,7 +43,7 @@ function App() {
     validate();
   }, []);
   return (
-    <div className='bg-stone-700  w-full h-screen flex flex-col justify-center items-center'>
+    <div className='bg-stone-700  w-full h-screen flex flex-col justify-center items-center overflow-auto pb-5'>
       {user ? (
         <AdminPanel />
       ) : (

@@ -1,65 +1,116 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import EventComponent from "./EventComponent";
+import OfertComponent from "./OfferComponent";
 
-export default function AdminPanel(){
-    const [offert,setOffert] = useState({title:"",description:"",price:0,image:""});
-    const [event,setEvent] = useState({title:"",description:"",duration:"",image:""});
-    const handleOffertChange = (e) => {
+export default function AdminPanel() {
+    const [offer, setoffer] = useState({ title: "", description: "", price: 0, image: "" });
+    const [event, setEvent] = useState({ title: "", description: "", duration: "", image: "" });
+    const [events, setEvents] = useState([]);
+    const [offers, setoffers] = useState([]);
+    const handleofferChange = (e) => {
         const { name, value } = e.target;
-        setOffert(prev => ({
+        setoffer(prev => ({
             ...prev,
             [name]: value
         }));
     };
-     const handleEventChange = (e) => {
+    const handleEventChange = (e) => {
         const { name, value } = e.target;
         setEvent(prev => ({
             ...prev,
             [name]: value
         }));
     };
-    const addOffert =async ()=>{
+    const addoffer = async () => {
         try {
-           await axios.post(`http://localhost:3002/addoffert`,{offert:offert},{withCredentials:true});
+            await axios.post(`http://localhost:3002/addoffer`, { offer: offer }, { withCredentials: true });
+            getoffers();
             alert("Pomyślnie dodano");
         } catch (error) {
             console.error(error);
             alert("Wystąpił Błąd");
         }
-        
+
     }
-    const addEvent =async ()=>{
+    const addEvent = async () => {
         console.log(event);
-        
+
         try {
-           await axios.post(`http://localhost:3002/addevent`,{event:event},{withCredentials:true});
+            await axios.post(`http://localhost:3002/addevent`, { event: event }, { withCredentials: true });
+            getEvents();
             alert("Pomyślnie dodano");
         } catch (error) {
             console.error(error);
             alert("Wystąpił Błąd");
         }
-        
+
     }
-    return(
-        <div className="text-white grid grid-cols-2 gap-5">
-            <div className="bg-stone-600 w-fit h-fit p-5 flex flex-col justify-center items-center rounded-4xl gap-5">
-                <h1>Dodaj Ofertę</h1>
-                <input placeholder="Nazwa" name="title" value={offert.title} className="bg-stone-700 rounded-xl pl-2 placeholder:pl-3 h-8 " type="text" onChange={handleOffertChange}/>
-                <input placeholder="Opis" name="description" value={offert.description} className="bg-stone-700 rounded-xl pl-2 placeholder:pl-3 h-8 " type="text" onChange={handleOffertChange}/>
-                <input placeholder="0" name="price" value={offert.price} className="bg-stone-700 rounded-xl pl-2 h-8 " type="number" onChange={handleOffertChange}/>
-                <input className="bg-stone-700 rounded-xl placeholder:pl-3 w-22 h-8 " type="file"/>
-                <button className="bg-stone-700 rounded-xl w-[80%] hover:bg-stone-500 duration-25 h-8" onClick={addOffert}>Dodaj</button>
+    const getEvents = async () => {
+        try {
+            const res = await axios.get("http://localhost:3001/events");
+            if (res.data) {
+                setEvents(res.data);
+            }
+        } catch (error) {
+            console.error(error);
+
+        }
+    }
+    const getoffers = async () => {
+        try {
+            const res = await axios.get("http://localhost:3001/offers");
+            if (res.data) {
+                setoffers(res.data);
+            }
+        } catch (error) {
+            console.error(error);
+
+        }
+    }
+    useEffect(() => {
+        getoffers();
+        getEvents();
+    },[])
+    return (
+        <>
+            <div className="text-white grid grid-cols-2 gap-5 mt-25">
+                <div className="bg-stone-600 w-fit h-fit p-5 flex flex-col justify-center items-center rounded-4xl gap-5">
+                    <h1>Dodaj Ofertę</h1>
+                    <input placeholder="Nazwa" name="title" value={offer.title} className="bg-stone-700 rounded-xl pl-2 placeholder:pl-3 h-8 " type="text" onChange={handleofferChange} />
+                    <input placeholder="Opis" name="description" value={offer.description} className="bg-stone-700 rounded-xl pl-2 placeholder:pl-3 h-8 " type="text" onChange={handleofferChange} />
+                    <input placeholder="Cena (liczba)" name="price" value={offer.price} className="bg-stone-700 rounded-xl pl-2 h-8 " type="number" onChange={handleofferChange} />
+                    <input className="bg-stone-700 rounded-xl placeholder:pl-3 w-22 h-8 " type="file" />
+                    <button className="bg-stone-700 rounded-xl w-[80%] hover:bg-stone-500 duration-25 h-8" onClick={addoffer}>Dodaj</button>
+                </div>
+                <div className="bg-stone-600 w-fit h-fit p-5 flex flex-col justify-center items-center rounded-4xl gap-5">
+                    <h1>Dodaj Wydarzenie</h1>
+                    <input placeholder="Nazwa" name="title" value={event.title} className="bg-stone-700 rounded-xl pl-2 placeholder:pl-3 h-8 " type="text" onChange={handleEventChange} />
+                    <input placeholder="Opis" name="description" value={event.description} className="bg-stone-700 rounded-xl pl-2 placeholder:pl-3 h-8 " type="text" onChange={handleEventChange} />
+                    <label>
+                        <input name="duration" value={event.price} className="bg-stone-700 rounded-xl pl-2 h-8 " type="date" onChange={handleEventChange} />
+                    </label>
+                    <input className="bg-stone-700 rounded-xl placeholder:pl-3 w-22 h-8 " type="file" />
+                    <button className="bg-stone-700 rounded-xl w-[80%] hover:bg-stone-500 duration-25 h-8" onClick={addEvent}>Dodaj</button>
+                </div>
+
             </div>
-            <div className="bg-stone-600 w-fit h-fit p-5 flex flex-col justify-center items-center rounded-4xl gap-5">
-                <h1>Dodaj Wydarzenie</h1>
-                <input placeholder="Nazwa" name="title" value={event.title} className="bg-stone-700 rounded-xl pl-2 placeholder:pl-3 h-8 " type="text" onChange={handleEventChange}/>
-                <input placeholder="Opis" name="description" value={event.description} className="bg-stone-700 rounded-xl pl-2 placeholder:pl-3 h-8 " type="text" onChange={handleEventChange}/>
-                <label>
-                    <input name="duration" value={event.price} className="bg-stone-700 rounded-xl pl-2 h-8 " type="date" onChange={handleEventChange}/>
-                </label>
-                <input className="bg-stone-700 rounded-xl placeholder:pl-3 w-22 h-8 " type="file"/>
-                <button className="bg-stone-700 rounded-xl w-[80%] hover:bg-stone-500 duration-25 h-8" onClick={addEvent}>Dodaj</button>
+            <div className="bg-stone-600 w-[80%] h-fit p-5 flex flex-col justify-center items-center rounded-4xl gap-5 text-white mt-10">
+                <h1>Wydarzenia</h1>
+                <div className="grid grid-cols-4 gap-5">
+                    {events.map((event)=>(
+                    <EventComponent event={event} key={event._id}/>
+                    ))}
+                </div>
             </div>
-        </div>
+            <div className="bg-stone-600 w-[80%] h-fit p-5 flex flex-col justify-center items-center rounded-4xl gap-5 text-white mt-10">
+                <h1>Oferty</h1>
+                <div className="grid grid-cols-4 gap-5">
+                    {offers.map((offer)=>(
+                    <OfertComponent offer={offer} key={offer._id}/>
+                    ))}
+                </div>
+            </div>
+        </>
     );
 }
