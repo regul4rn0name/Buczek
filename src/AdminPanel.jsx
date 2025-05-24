@@ -99,7 +99,7 @@ export default function AdminPanel() {
                 <h1>Wydarzenia</h1>
                 <div className="grid grid-cols-4 gap-5">
                     {events.map((event)=>(
-                    <EventComponent event={event} key={event._id}/>
+                    <EventComponent event={event} key={event._id} getEvents={getEvents}/>
                     ))}
                 </div>
             </div>
