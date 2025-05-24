@@ -29,7 +29,7 @@ export default function Oferts() {
 
   return (
     <div className="mb-5">
-      <h1 className="text-black text-5xl justify-center flex mt-5 font-medium">
+      <h1 className="text-5xl justify-center flex mt-5 font-medium text-cyan-600 font-ubuntu">
         Oferty
       </h1>
       <div
@@ -38,7 +38,7 @@ export default function Oferts() {
       >
         
         {items.map((item, index) => (
-          <div key={index} className="flex w-full flex-shrink-0">
+          <div key={index} className="flex flex-shrink-0">
             <OfertComponent />
           </div>
         ))}
