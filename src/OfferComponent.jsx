@@ -12,7 +12,7 @@ export default function OfertComponent({offer, getoffers}){
     }
     return(
          <div className="flex flex-col text-white">
-            <img src="/example.jpeg" className="w-80 h-96"/>
+            <img src={`http://localhost:3002${offer.image}`}  className="w-80 h-96"/>
             <h3 className="text-[18px]  font-ubuntu italic text-left">{offer.title}</h3>
             <h4 className="font-ubuntu italic">{offer.description}</h4>
             <h4 className="font-ubuntu italic">{offer.price} zł</h4>

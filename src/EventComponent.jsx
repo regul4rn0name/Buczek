@@ -14,9 +14,10 @@ export default function EventComponent({event,getEvents}){
     }
     return(
         <div className="flex flex-col text-white">
-            <img src="/example.jpeg" className="w-80 h-96"/>
+            <img src={`http://localhost:3002${event.image}`} className="w-80 h-96"/>
             <h3 className="text-[18px] font-ubuntu italic text-left">{event.title}</h3>
             <h4 className=" font-ubuntu italic">{event.description}</h4>
+            <h4 className=" font-ubuntu italic">Do: {event.duration}</h4>
             <button onClick={remove}>Usuń</button>
         </div>
     );
