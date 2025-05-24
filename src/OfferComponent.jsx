@@ -1,13 +1,14 @@
-export default function OfertComponent({offer}){
-    const singup = ()=>{
-        const popup = window.open(
-            'https://zapisy.activenow.pl/buma-sport-zajecia/',
-            "Zapisz Się",
-            'popup=yes,width=400,heigh=200,top=100,left=100,scrollbars=yes,resizable=yes,toolbar=no,menubar=no'
-        );
-        if(!popup){
-            alert("Okno wyskakujące jest zablokowane. Proszę zezwolić na wyświetlanie wyskakujących okien dla tej witryny.")
-        } 
+import axios from "axios";
+
+export default function OfertComponent({offer, getoffers}){
+    const removeOffer = async ()=>{
+        try {
+            await axios.post("http://localhost:3002/deleteoffer",{offer:offer},{withCredentials:true});
+            getoffers();
+        } catch (error) {
+             console.error(error);
+            alert("Wystąpił błąd");
+        }
     }
     return(
          <div className="flex flex-col text-white">
@@ -15,6 +16,7 @@ export default function OfertComponent({offer}){
             <h3 className="text-[18px]  font-ubuntu italic text-left">{offer.title}</h3>
             <h4 className="font-ubuntu italic">{offer.description}</h4>
             <h4 className="font-ubuntu italic">{offer.price} zł</h4>
+            <button onClick={removeOffer}>Usuń</button>
         </div>
     )
 }

@@ -8,7 +8,7 @@ export default function EventComponent({event,getEvents}){
 
         } catch (error) {
             console.error(error);
-            alert("Wystąpił błąd")
+            alert("Wystąpił błąd");
             
         }
     }
