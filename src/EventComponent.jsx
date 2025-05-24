@@ -4,8 +4,6 @@ export default function EventComponent({event,getEvents}){
     const remove = async ()=>{
         try {
              await axios.post("http://localhost:3002/deleteEvent",{event:event},{withCredentials:true});
-             console.log(event);
-             
              getEvents();
 
         } catch (error) {
