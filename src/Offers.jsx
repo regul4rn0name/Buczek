@@ -1,20 +1,22 @@
-import OfertComponent from "./OfertComponent";
+import OfferComponent from "./OfferComponent";
 import Header from "./Header";
 import React, { useRef, useEffect, useState } from "react";
+import axios from "axios";
 
-export default function Oferts() {
-  const items = [1, 2, 3, 4, 5, 6];
+export default function Offers({offers}) {
+
 
   const scrollRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  
   useEffect(() => {
     const interval = setInterval(() => {
       const container = scrollRef.current;
       if (!container) return;
 
       const childWidth = container.children[0]?.offsetWidth || 0;
-      const nextIndex = (currentIndex + 1) % items.length;
+      const nextIndex = (currentIndex + 1) % offers.length;
 
       container.scrollTo({
         left: nextIndex * childWidth,
@@ -25,8 +27,7 @@ export default function Oferts() {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex, items.length]);
-
+  }, [currentIndex, offers.length]);
   return (
     <div className="mb-5">
       <h1 className="text-5xl justify-center flex mt-5 font-medium text-cyan-600 font-ubuntu">
@@ -37,9 +38,9 @@ export default function Oferts() {
         ref={scrollRef}
       >
         
-        {items.map((item, index) => (
+        {offers.map((offer, index) => (
           <div key={index} className="flex flex-shrink-0">
-            <OfertComponent />
+            <OfferComponent offer={offer}/>
           </div>
         ))}
       </div>
