@@ -1,6 +1,8 @@
+import Headerimg from "/Header-img.webp"
+
 export default function Header({ onOfertsClick }){
     return(
-        <div className="bg-[url('Header-img.webp')] bg-cover bg-center h-screen w-full">
+        <div style={{ backgroundImage: `url(${Headerimg})` }} className="bg-cover bg-center h-screen w-full">
             <section className="flex justify-self-end flex-col h-1/2">
                 <div className="text-white flex justify-end space-x-5 p-8">
                     <button onClick={()=>onOfertsClick(2)}>O mnie</button>
