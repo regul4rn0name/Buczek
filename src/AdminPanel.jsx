@@ -30,7 +30,7 @@ export default function AdminPanel() {
         formData.append("image", offer.image);
         
         try {
-            await axios.post(`http://localhost:3002/addoffer`, formData, {
+            await axios.post(`https://admin.bumasport.pl/server/addoffer`, formData, {
                 withCredentials: true, headers: {
                     "Content-Type": "multipart/form-data"
                 }
@@ -51,7 +51,7 @@ export default function AdminPanel() {
         formData.append("image", event.image);
 
         try {
-            await axios.post(`http://localhost:3002/addevent`, formData, { withCredentials: true,headers:{"Content_Type":"multipart/form-data"} });
+            await axios.post(`https://admin.bumasport.pl/server/addevent`, formData, { withCredentials: true,headers:{"Content_Type":"multipart/form-data"} });
             getEvents();
             alert("Pomyślnie dodano");
         } catch (error) {
@@ -62,7 +62,7 @@ export default function AdminPanel() {
     }
     const getEvents = async () => {
         try {
-            const res = await axios.get("http://localhost:3001/events");
+            const res = await axios.get("https://www.bumasport.pl/server/events");
             if (res.data) {
                 setEvents(res.data);
             }
@@ -73,7 +73,7 @@ export default function AdminPanel() {
     }
     const getoffers = async () => {
         try {
-            const res = await axios.get("http://localhost:3001/offers");
+            const res = await axios.get("https://www.bumasport.pl/server/offers");
             if (res.data) {
                 setoffers(res.data);
             }

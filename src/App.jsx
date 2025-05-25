@@ -12,7 +12,7 @@ function App() {
    const validate = async () => {
     
       try {
-        const res = await axios.post("http://localhost:3002/validate", {},{ withCredentials: true });
+        const res = await axios.post("https://admin.bumasport.pl/server/validate", {},{ withCredentials: true });
         if (res.data) {
           console.log(res.data);
           
@@ -25,7 +25,7 @@ function App() {
     }
   const signin = async () => {
     try {
-      await axios.post('http://localhost:3002/login', { login: login.login, password: sha256(login.password) }, { withCredentials: true });
+      await axios.post('https://admin.bumasport.pl/server/login', { login: login.login, password: sha256(login.password) }, { withCredentials: true });
       validate();
       
     } catch (err) {
