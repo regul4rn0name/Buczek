@@ -16,7 +16,7 @@ export default function OfferComponent({offer}){
                 <br />
                 <h2 className="text-cyan-900 font-ubuntu">{offer.description}</h2>
                 <br />
-                <h3 className="mt-10 text-cyan-600 font-ubuntu text-[18px]">34zl</h3>
+                <h3 className="mt-10 text-cyan-600 font-ubuntu text-[18px]">{offer.price}</h3>
                 <button onClick={singup} className="border-3 border-black rounded-full mb-5 hover:border-stone-600 hover:bg-stone-600 hover:text-white duration-25 font-ubuntu">Zapisz się</button>
             </section>
             <img className="w-2/4 bg-cover bg-center rounded-xl" src={`https://admin.bumasport.pl/server${offer.image}`}/>
