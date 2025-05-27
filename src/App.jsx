@@ -1,7 +1,8 @@
-import About from "./About"
-import Events from "./Events"
+import About from "./About";
+import Events from "./Events";
 import Header from "./Header";
 import Offers from "./Offers";
+import Footer from "./Footer";
 import axios from "axios";
 import { useRef,useState,useEffect } from "react";
 
@@ -59,7 +60,7 @@ useEffect(()=>{
       <div className="mb-5"  ref={ensureRef(2)}>
         <About/>
       </div>
-      
+      <Footer/>
 
     </>
   )
