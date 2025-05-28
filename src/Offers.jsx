@@ -30,7 +30,7 @@ export default function Offers({offers}) {
   
   return (
     <div className="mb-5">
-      <h1 className="text-5xl justify-center flex mt-5 font-medium text-cyan-600 font-ubuntu">
+      <h1 className="text-5xl justify-center flex mt-5 font-medium text-cyan-600 font-ubuntu md:text-6xl">
         Oferty
       </h1>
       <div
