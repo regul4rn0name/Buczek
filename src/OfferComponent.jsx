@@ -10,7 +10,7 @@ export default function OfferComponent({offer}){
         } 
     }
     return(
-        <div className="flex flex-row h-98 w-[25.5rem] mx-2  bg-white rounded-2xl  border-solid border-cyan-600 border-3">
+        <div className="flex flex-row h-98 w-[22rem] mx-2  bg-white rounded-2xl  border-solid border-cyan-600 border-3">
             <section className="w-1/2 rounded-l-xl flex flex-col text-center text-wrap px-3">
                 <h1 className="text-xl font-medium mt-3 text-cyan-600 font-ubuntu">{offer.title}</h1>
                 <br />
