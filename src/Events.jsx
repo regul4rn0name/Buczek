@@ -28,9 +28,9 @@ export default function Events({events}) {
 
     return (
         
-        <div className="w-screen flex flex-col justify-center items-center ">
+        <div className="w-full flex flex-col justify-center items-center ">
             <h1 className="text-5xl justify-center flex mt-5 font-medium text-cyan-600 font-ubuntu md:text-6xl">Wydarzenia</h1>
-                 <div className="overflow-x-auto w-screen whitespace-nowrap flex mt-9 no-scrollbar scroll-smooth " ref={scrollRef}>
+                 <div className="overflow-x-auto w-full whitespace-nowrap flex mt-9 no-scrollbar scroll-smooth " ref={scrollRef}>
                     {events.map((event, index) => (
                       <div key={index} className="flex flex-shrink-0">
                         <EventComponent event={event}/>

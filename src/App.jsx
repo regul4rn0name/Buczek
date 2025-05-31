@@ -1,5 +1,5 @@
-import axios from "axios";
-import { useRef,useState,useEffect,lazy,Suspense } from "react";
+import Footer from "./Footer";
+import { useRef,lazy,Suspense } from "react";
 import useFetchData from "./hooks/useFetchData";
 
 
