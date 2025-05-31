@@ -1,6 +1,6 @@
 export default function EventComponent({event}){
     return(
-        <div className="flex flex-col w-[25.7rem] mx-2 bg-white rounded-2xl border-solid border-cyan-600 border-3 overflow-hidden">
+        <div className="flex flex-col w-[25.5rem] mx-2 bg-white rounded-2xl border-solid border-cyan-600 border-3 overflow-hidden">
 
             <img
                 src={`https://admin.bumasport.pl/server${event.image}`}
