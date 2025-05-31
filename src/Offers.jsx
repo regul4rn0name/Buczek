@@ -1,7 +1,6 @@
 import OfferComponent from "./OfferComponent";
 import Header from "./Header";
 import React, { useRef, useEffect, useState } from "react";
-import axios from "axios";
 
 export default function Offers({offers}) {
 
@@ -28,13 +27,14 @@ export default function Offers({offers}) {
 
     return () => clearInterval(interval);
   }, [currentIndex, offers.length]);
+  
   return (
     <div className="mb-5">
-      <h1 className="text-5xl justify-center flex mt-5 font-medium text-cyan-600 font-ubuntu">
+      <h1 className="text-5xl justify-center flex mt-5 font-medium text-cyan-600 font-ubuntu md:text-6xl">
         Oferty
       </h1>
       <div
-        className="overflow-x-scroll whitespace-nowrap flex mt-9 no-scrollbar scroll-smooth"
+        className="overflow-x-auto whitespace-nowrap flex mt-9 no-scrollbar scroll-smooth"
         ref={scrollRef}
       >
         

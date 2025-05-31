@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+import About from "./About";
+import Events from "./Events";
+import Header from "./Header";
+import Offers from "./Offers";
+import Footer from "./Footer";
+>>>>>>> 5848faa2aea4b853d381cc98e73a7f1455186d49
 import axios from "axios";
 import { useRef,useState,useEffect,lazy,Suspense } from "react";
 import useFetchData from "./hooks/useFetchData";
@@ -34,7 +42,7 @@ function App() {
       <div className="mb-5"  ref={ensureRef(2)}>
         <About/>
       </div>
-      
+      <Footer/>
 
     </Suspense>
   )
